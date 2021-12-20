@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_deal_meetup_locations",
+  "info": {
+    "displayName": "location",
+    "icon": "map-marker-alt"
+  },
+  "options": {},
+  "attributes": {
+    "lat": {
+      "type": "float"
+    },
+    "lng": {
+      "type": "float"
+    },
+    "text_address": {
+      "type": "string"
+    }
+  }
+}
