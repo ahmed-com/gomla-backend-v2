@@ -35,9 +35,9 @@
         "images"
       ]
     },
-    "user_id": {
+    "user_ids": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
       "inversedBy": "partners"
     },

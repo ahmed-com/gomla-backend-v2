@@ -173,17 +173,14 @@
       "component": "deal-meetup.location",
       "required": true
     },
-    "owner": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "deals"
-    },
     "partners": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::partner.partner",
-      "inversedBy": "deals"
+      "mappedBy": "deals"
+    },
+    "owner": {
+      "type": "integer"
     }
   }
 }

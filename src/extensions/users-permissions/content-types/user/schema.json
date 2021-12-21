@@ -63,17 +63,18 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "deals": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::deal.deal",
-      "mappedBy": "owner"
+    "avatar": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     },
     "partners": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::partner.partner",
-      "mappedBy": "user_id"
+      "inversedBy": "user_ids"
     }
   }
 }

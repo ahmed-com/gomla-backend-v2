@@ -6,9 +6,9 @@
 
 const { createCoreController } = require("@strapi/strapi").factories;
 
-module.exports = createCoreController("api::deal.deal", () => ({
+module.exports = createCoreController("api::deal.deal", ({ strapi }) => ({
   async create(ctx) {
-    ctx.request.body.owner = ctx.state.user.id;
+    ctx.request.body.data.owner = ctx.state.user.id;
 
     const response = await super.create(ctx);
 
@@ -16,10 +16,15 @@ module.exports = createCoreController("api::deal.deal", () => ({
   },
 
   async update(ctx) {
-    const response = await super.update(ctx);
+    const { id } = ctx.params;
+    const claimer = ctx.state.user.id;
 
-    if (response.body.id !== ctx.state.user.id)
-      return ctx.unauthorized(`You can't update this entry`);
+    const isOwner =
+      (await strapi.service("api::deal.deal").findOne(id).owner) === claimer;
+
+    if (!isOwner) return ctx.unauthorized(`You can't update this entry`);
+
+    const response = await super.update(ctx);
 
     return response;
   },
