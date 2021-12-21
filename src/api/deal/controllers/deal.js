@@ -20,7 +20,7 @@ module.exports = createCoreController("api::deal.deal", ({ strapi }) => ({
     const claimer = ctx.state.user.id;
 
     const isOwner =
-      (await strapi.service("api::deal.deal").findOne(id).owner) === claimer;
+      (await strapi.service("api::deal.deal").findOne(id)).owner === claimer;
 
     if (!isOwner) return ctx.unauthorized(`You can't update this entry`);
 
