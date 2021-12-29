@@ -3,6 +3,7 @@ version: "3.8"
 services:
 
   mysql:
+    platform: linux/x86_64
     image: mysql
     command: mysqld --default-authentication-plugin=mysql_native_password
     volumes:
