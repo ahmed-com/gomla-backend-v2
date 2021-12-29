@@ -12,6 +12,7 @@ services:
     - ./mysql.env
   
   strapi:
+    platform: linux/amd64
     build: .
     volumes:
       - uploads:/app/public/uploads
